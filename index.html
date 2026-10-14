@@ -112,9 +112,6 @@
     font-family: var(--f-display); font-size: 2.6rem; color: var(--accent); letter-spacing: 0.04em;
   }
   .intro-text { min-width: 0; }
-  .mentor-note { color: var(--muted); font-size: 0.95rem; margin: 1rem 0 0.6rem; }
-  .names { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
-  .names li { font-weight: 600; }
   @media (max-width: 560px) {
     .intro { grid-template-columns: 1fr; gap: 1.25rem; }
     .avatar { width: 6.5rem; font-size: 2rem; }
@@ -172,16 +169,13 @@
   .stat-num { font-family: var(--f-display); font-size: 2.7rem; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
   .stat-label { font-size: 0.92rem; line-height: 1.4; }
   .stat-src { font-family: var(--f-mono); font-size: 0.72rem; color: var(--muted); line-height: 1.45; }
-  figure.es { margin: 0; min-width: 0; }
-  .es svg { display: block; width: 100%; max-width: 100%; height: auto; }
-  .es figcaption { font-size: 0.8rem; color: var(--muted); line-height: 1.45; margin-top: 0.4rem; }
-  .es .grid { stroke: var(--line); stroke-width: 1; }
-  .es .zero { stroke: var(--muted); stroke-width: 1; opacity: 0.55; }
-  .es .exp { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
-  .es .path { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
-  .es .pt { fill: var(--accent); }
-  .es .ref { fill: var(--surface); stroke: var(--accent); stroke-width: 1.5; }
-  .es text { font-family: var(--f-mono); font-size: 9px; fill: var(--muted); }
+  .results { list-style: none; margin: 0; padding: 0; display: grid; min-width: 0; }
+  .results li { display: grid; grid-template-columns: 4.4rem minmax(0, 1fr); gap: 0.8rem; align-items: baseline; padding-block: 0.5rem; }
+  .results li:first-child { padding-top: 0; }
+  .results li + li { border-top: 1px solid var(--line); }
+  .r-num { font-family: var(--f-display); font-size: 1.3rem; line-height: 1.1; color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .r-txt { font-size: 0.9rem; line-height: 1.45; min-width: 0; }
+  .r-sig { margin-left: 0.35rem; font-family: var(--f-mono); font-size: 0.7rem; color: var(--muted); white-space: nowrap; }
   .abstract { font-size: 0.98rem; margin: 0; }
 
   .papers { display: grid; }
@@ -286,7 +280,7 @@
     <dl class="facts">
       <div>
         <dt>Email</dt>
-        <dd><a href="mailto:xixian_niu@outlook.com" id="email">xixian_niu@outlook.com</a><button type="button" class="copy" id="copy-email">Copy</button></dd>
+        <dd><a href="mailto:xixian.niu@ulb.be" id="email">xixian.niu@ulb.be</a><button type="button" class="copy" id="copy-email">Copy</button></dd>
       </div>
       <div>
         <dt>CV</dt>
@@ -294,7 +288,7 @@
       </div>
       <div>
         <dt>Office</dt>
-        <dd>ECARES, Université Libre de Bruxelles, Brussels</dd>
+        <dd>Université Libre de Bruxelles, Brussels</dd>
       </div>
       <div>
         <dt>Fields</dt>
@@ -306,16 +300,9 @@
     <a class="jmp-teaser" href="#research">
       <span class="eyebrow">Job market paper</span>
       <span class="teaser-title">Asymmetric Intellectual Property and Follow-on Innovation: Evidence from Drug Repurposing</span>
-      <span class="teaser-line">A broad patent on a drug is a gate that follow-on innovators must license through, and also the shield that protects their new use from imitation. One more year of exclusivity raises expected repurposing by about 25 percent.</span>
+      <span class="teaser-line">A broad patent on a drug is a gate that follow-on innovators must license through, and also the shield that protects their new use from imitation. One more year of exclusivity raises expected post-approval indications by about 34 percent.</span>
       <span class="teaser-more">Abstract, paper and results →</span>
     </a>
-
-    <h2>Mentoring</h2>
-    <p class="mentor-note">Master’s thesis co-supervision with Hilde Stevens, I3h, Université Libre de Bruxelles</p>
-    <ul class="names">
-      <li>Alessandro Giarrizzo</li>
-      <li>Nour Hammoudi</li>
-    </ul>
 
     <h2>References</h2>
     <ul class="refs">
@@ -344,62 +331,36 @@
     <h2>Job market paper</h2>
     <article class="jmp">
       <h3 class="paper-title">Asymmetric Intellectual Property and Follow-on Innovation: Evidence from Drug Repurposing</h3>
-      <p class="meta">Solo-authored · Latest draft August 2026</p>
+      <p class="meta">Solo-authored · Latest draft October 2026</p>
       <div class="actions">
         <a class="btn" href="JMP_Xixian_Niu.pdf" target="_blank" rel="noopener">Paper (PDF)</a>
       </div>
 
       <div class="result">
         <div class="stat">
-          <span class="stat-num">+25%</span>
-          <span class="stat-label">expected repurposing per additional year of effective exclusivity</span>
-          <span class="stat-src">IV-Poisson, 222 FDA-approved molecules, 1985–2024</span>
+          <span class="stat-num">+34%</span>
+          <span class="stat-label">expected post-approval indications per additional year of effective exclusivity</span>
+          <span class="stat-src">About 0.5 more indications for the average molecule. Instrument: FDA review time. New molecular entities approved 1985–2024.</span>
         </div>
-        <figure class="es">
-          <svg viewBox="0 0 344 152" role="img" aria-labelledby="es-title">
-            <title id="es-title">Entrant repurposing approvals by year relative to loss of exclusivity</title>
-            <line class="grid" x1="36" x2="328" y1="14" y2="14"/>
-            <line class="zero" x1="36" x2="328" y1="43.7" y2="43.7"/>
-            <line class="grid" x1="36" x2="328" y1="73.4" y2="73.4"/>
-            <line class="grid" x1="36" x2="328" y1="103.1" y2="103.1"/>
-            <text x="29" y="17" text-anchor="end">1</text>
-            <text x="29" y="46.7" text-anchor="end">0</text>
-            <text x="29" y="76.4" text-anchor="end">−1</text>
-            <text x="29" y="106.1" text-anchor="end">−2</text>
-            <line class="exp" x1="182" x2="182" y1="6" y2="122"/>
-            <text x="187" y="11" text-anchor="start">loss of exclusivity</text>
-            <polyline class="path" points="36,27.3 65.2,33.2 94.4,32.3 123.6,25.5 152.8,43.7 182,61.7 211.2,54.8 240.4,57.6 269.6,92.2 298.8,74.9 328,112.5"/>
-            <circle class="pt" cx="36" cy="27.3" r="3"/>
-            <circle class="pt" cx="65.2" cy="33.2" r="3"/>
-            <circle class="pt" cx="94.4" cy="32.3" r="3"/>
-            <circle class="pt" cx="123.6" cy="25.5" r="3"/>
-            <circle class="ref" cx="152.8" cy="43.7" r="3"/>
-            <circle class="pt" cx="182" cy="61.7" r="3"/>
-            <circle class="pt" cx="211.2" cy="54.8" r="3"/>
-            <circle class="pt" cx="240.4" cy="57.6" r="3"/>
-            <circle class="pt" cx="269.6" cy="92.2" r="3"/>
-            <circle class="pt" cx="298.8" cy="74.9" r="3"/>
-            <circle class="pt" cx="328" cy="112.5" r="3"/>
-            <text x="36" y="136" text-anchor="middle">≤−5</text>
-            <text x="152.8" y="136" text-anchor="middle">−1</text>
-            <text x="182" y="136" text-anchor="middle">0</text>
-            <text x="328" y="136" text-anchor="middle">≥+5</text>
-            <text x="182" y="149" text-anchor="middle">years relative to loss of exclusivity</text>
-          </svg>
-          <figcaption>Entrant repurposing approvals, fixed-effects Poisson coefficients (log points) relative to the year before expiry, balanced five-year window. Approvals fall into expiry and do not rebound after it.</figcaption>
-        </figure>
+        <ul class="results">
+          <li><span class="r-num">+72%</span><span class="r-txt">Originator repurposing per year of exclusivity <span class="r-sig">10% level</span></span></li>
+          <li><span class="r-num">+25%</span><span class="r-txt">Entrant repurposing per year of exclusivity <span class="r-sig">5% level</span></span></li>
+          <li><span class="r-num">+29%</span><span class="r-txt">New indications on the same product, which generics substitute directly <span class="r-sig">1% level</span></span></li>
+          <li><span class="r-num">15 yrs</span><span class="r-txt">Beyond about this length, the marginal effect is indistinguishable from zero</span></li>
+        </ul>
       </div>
 
       <p class="abstract">
-        Patent protection over a redeployed technology is vertically asymmetric: a follow-on innovator’s patent
-        reaches only the new use, never the technology beneath it. The broad upstream patent is therefore not
-        merely a gate the follow-on licenses through, but a shield it sells behind, since imitating the follow-on
-        infringes the upstream patent for as long as it stands. Longer upstream protection can consequently raise
-        follow-on innovation rather than deter it, reversing the prediction of the symmetric benchmark in the
-        literature. Using a new dataset of all FDA-approved new molecular entities, 1985–2024, and instrumenting
-        exclusivity with the patent-filing-to-trial gap, I estimate that an additional year of protection raises
-        expected repurposing by roughly twenty-five percent, with the effect strongest precisely where the shield
-        rather than the gate should bind.
+        Theories of cumulative innovation treat an upstream patent as a gate. This assumes symmetric protection:
+        follow-on innovators can protect their own inventions from imitation. I show that when they cannot, the
+        upstream patent also acts as a shield, because imitating a licensed follow-on innovation infringes it.
+        Longer upstream protection can then increase follow-on innovation. Drug repurposing exhibits this asymmetry.
+        A molecule’s patent covers every use, but new-use rights are narrow and hard to enforce. Using new molecular
+        entities approved by the FDA between 1985 and 2024, and instrumenting effective exclusivity with FDA review
+        time, I estimate that one more year of exclusivity raises expected post-approval indications by about
+        34 percent. The marginal effect vanishes beyond roughly 15 years. Originators and entrants both respond
+        positively, as the shield predicts. The results point to a failure in the protection of new uses, not a case
+        for longer patents.
       </p>
     </article>
 
@@ -455,31 +416,6 @@
         <p class="where">Policy report for the Horizon Europe Hi-Prix project, 2026</p>
       </div>
     </div>
-
-    <h2>Presentations</h2>
-    <div class="rows">
-      <div class="row">
-        <div class="when">2026</div>
-        <div class="what">European Winter Meeting of the Econometric Society, Warsaw (forthcoming)</div>
-      </div>
-      <div class="row">
-        <div class="when">2025</div>
-        <div class="what">Hi-Prix Consortium Annual Conference, Brussels (poster)</div>
-      </div>
-      <div class="row">
-        <div class="when">2024</div>
-        <div class="what">Hi-Prix Consortium Annual Conference, Lisbon</div>
-      </div>
-    </div>
-
-    <h2>Fellowships</h2>
-    <div class="rows">
-      <div class="row">
-        <div class="when">2023 – 2026</div>
-        <div class="what">Ph.D. Fellowship, Horizon Europe Hi-Prix project
-          <p class="sub">One of two doctoral positions funded by the consortium.</p></div>
-      </div>
-    </div>
   </section>
 
   <!-- ===================== DATA & PROJECTS ===================== -->
@@ -493,7 +429,7 @@
     <div class="scale">
       <div><span class="n">1,342</span><span class="l">FDA-approved molecules tracked, 1985–2024</span></div>
       <div><span class="n">1,078</span><span class="l">innovation policies coded across 42 countries</span></div>
-      <div><span class="n">1.9M</span><span class="l">R&amp;D grants linked to policy changes</span></div>
+      <div><span class="n">1.9M</span><span class="l">R&amp;D activities linked to policy changes</span></div>
       <div><span class="n">78,060</span><span class="l">firm–country–years on orphan drugs</span></div>
     </div>
 
@@ -525,7 +461,7 @@
         <h3>FDA drug approvals, patents and exclusivity database</h3>
         <span class="when">2023 – present</span>
       </div>
-      <p class="role">Researcher, ECARES, Brussels</p>
+      <p class="role">Researcher, Brussels</p>
       <p class="desc">
         Every new molecular entity approved by the FDA since 1985, linked to its patent terms, regulatory exclusivities
         and later repurposing events. I extended the NBER Orange Book files through 2024 by parsing thousands of Orange
@@ -541,29 +477,10 @@
 
     <article class="proj">
       <div class="proj-head">
-        <h3>Pharmaceutical R&amp;D data infrastructure</h3>
-        <span class="when">2023 – 2024</span>
-      </div>
-      <p class="role">Lead developer, cross-project, Brussels</p>
-      <p class="desc">
-        A linked database of publications, patents, grants, clinical trials and R&amp;D milestone events, collected
-        through APIs and matched through citation links and disease classification, with server-based pipelines
-        from collection to analysis-ready tables.
-      </p>
-      <dl class="spec">
-        <div><dt>Scale</dt><dd>Millions of records across publications, patents, grants, trials and milestones</dd></div>
-        <div><dt>Sources</dt><dd>Dimensions and Cortellis APIs</dd></div>
-        <div><dt>Linkage</dt><dd>Citation links; ICD-11 disease classification</dd></div>
-        <div><dt>Stack</dt><dd>Python and R on a research server</dd></div>
-      </dl>
-    </article>
-
-    <article class="proj">
-      <div class="proj-head">
         <h3>Patent-box tax regimes and orphan drugs</h3>
         <span class="when">2023 – present</span>
       </div>
-      <p class="role">Researcher, ECARES, Brussels</p>
+      <p class="role">Researcher, Brussels</p>
       <p class="desc">
         A country–year panel of preferential IP-box tax regimes across EMA member states, assembled from national
         legislation, OECD reports and professional tax guides, and merged with firm-level data on orphan-drug trials,
@@ -610,8 +527,8 @@
   <div class="wrap foot-grid">
     <div>
       <p class="foot-h">Contact</p>
-      <p>xixian_niu@outlook.com</p>
-      <p>ECARES, Université Libre de Bruxelles<br>Brussels, Belgium</p>
+      <p>xixian.niu@ulb.be</p>
+      <p>Université Libre de Bruxelles<br>Brussels, Belgium</p>
     </div>
     <div>
       <p class="foot-h">Documents</p>
@@ -641,7 +558,7 @@
     show(location.hash.slice(1), false);
 
     var btn = document.getElementById("copy-email");
-    var addr = "xixian_niu@outlook.com";
+    var addr = "xixian.niu@ulb.be";
     function done(label) {
       btn.textContent = label;
       setTimeout(function () { btn.textContent = "Copy"; }, 1800);
