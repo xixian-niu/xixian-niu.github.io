@@ -110,7 +110,9 @@
     background: var(--accent-soft); border: 1px solid var(--line);
     display: grid; place-items: center;
     font-family: var(--f-display); font-size: 2.6rem; color: var(--accent); letter-spacing: 0.04em;
+    position: relative; overflow: hidden;
   }
+  .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .intro-text { min-width: 0; }
   @media (max-width: 560px) {
     .intro { grid-template-columns: 1fr; gap: 1.25rem; }
@@ -194,15 +196,8 @@
   summary { cursor: pointer; color: var(--accent); font-family: var(--f-mono); font-size: 0.8rem; letter-spacing: 0.03em; width: fit-content; }
   details p { margin: 0.5rem 0 0; font-size: 0.95rem; }
 
-  /* ---------- dated rows (education, positions, talks) ---------- */
-  .rows { display: grid; }
-  .row { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 1rem; padding-block: 0.85rem; }
-  .row + .row { border-top: 1px solid var(--line); }
+  /* ---------- project dates ---------- */
   .when { font-family: var(--f-mono); font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 0.2rem; }
-  .what { min-width: 0; }
-  .what strong { font-weight: 600; }
-  .what .sub { color: var(--muted); font-size: 0.93rem; margin: 0.15rem 0 0; }
-  @media (max-width: 480px) { .row { grid-template-columns: 1fr; gap: 0.15rem; } }
 
   /* ---------- data & projects ---------- */
   .lede { font-size: 1.05rem; max-width: 62ch; }
@@ -264,8 +259,8 @@
   <!-- ===================== HOME ===================== -->
   <section id="home" data-section>
     <div class="intro">
-      <!-- Replace with your photo: <img class="avatar" src="photo.jpg" alt="Xixian Niu"> -->
-      <div class="avatar" aria-hidden="true">XN</div>
+      <!-- Photo: upload a square image named photo.jpg next to this file. Until then the initials show. -->
+      <div class="avatar"><span aria-hidden="true">XN</span><img src="photo.jpg" alt="Xixian Niu"></div>
       <div class="intro-text">
         <h1>Welcome to Xixian Niu’s website</h1>
         <p>
@@ -331,7 +326,7 @@
     <h2>Job market paper</h2>
     <article class="jmp">
       <h3 class="paper-title">Asymmetric Intellectual Property and Follow-on Innovation: Evidence from Drug Repurposing</h3>
-      <p class="meta">Solo-authored · Latest draft October 2026</p>
+      <p class="meta">Latest draft October 2026</p>
       <div class="actions">
         <a class="btn" href="JMP_Xixian_Niu.pdf" target="_blank" rel="noopener">Paper (PDF)</a>
       </div>
@@ -345,7 +340,6 @@
         <ul class="results">
           <li><span class="r-num">+72%</span><span class="r-txt">Originator repurposing per year of exclusivity <span class="r-sig">10% level</span></span></li>
           <li><span class="r-num">+25%</span><span class="r-txt">Entrant repurposing per year of exclusivity <span class="r-sig">5% level</span></span></li>
-          <li><span class="r-num">+29%</span><span class="r-txt">New indications on the same product, which generics substitute directly <span class="r-sig">1% level</span></span></li>
           <li><span class="r-num">15 yrs</span><span class="r-txt">Beyond about this length, the marginal effect is indistinguishable from zero</span></li>
         </ul>
       </div>
@@ -493,25 +487,6 @@
       </dl>
     </article>
 
-    <h2>Earlier experience</h2>
-    <div class="rows">
-      <div class="row">
-        <div class="when">2023 – 2024</div>
-        <div class="what"><strong>Visiting Researcher</strong>, Imperial College London
-          <p class="sub">Centre for Health Economics and Policy Innovation, hosted by Marisa Miraldo. Year-long visit working on the 42-country policy project.</p></div>
-      </div>
-      <div class="row">
-        <div class="when">2021 – 2022</div>
-        <div class="what"><strong>Research Intern</strong>, Fair Division project, Paris 1 Panthéon-Sorbonne
-          <p class="sub">Supervised by Hervé Moulin.</p></div>
-      </div>
-      <div class="row">
-        <div class="when">2019</div>
-        <div class="what"><strong>Data Analyst</strong>, Xiamen Lianzhidao Information Service, Xiamen
-          <p class="sub">Crypto-market intelligence start-up. Built a rating model with LASSO and random-forest feature selection across hundreds of candidate variables; scraped social-media data for a monthly client market report.</p></div>
-      </div>
-    </div>
-
     <h2>Toolkit</h2>
     <dl class="tools">
       <div><dt>Programming</dt><dd>Python, R, Stata, Quarto / R Markdown, LaTeX; SQL and Git (basic)</dd></div>
@@ -541,6 +516,13 @@
 
 <script>
   (function () {
+    // Show the initials until photo.jpg exists next to the page.
+    document.querySelectorAll(".avatar img").forEach(function (img) {
+      function drop() { img.remove(); }
+      if (img.complete && img.naturalWidth === 0) drop();
+      else img.addEventListener("error", drop);
+    });
+
     var tabs = ["home", "research", "data"];
     var sections = document.querySelectorAll("[data-section]");
     var links = document.querySelectorAll("nav a[data-tab]");
