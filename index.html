@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xixian Niu</title>
+<meta name="description" content="Xixian Niu, Ph.D. candidate in Economics at ECARES, Université Libre de Bruxelles. Economics of innovation, health economics, industrial organization.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  /* Layout: one 46rem reading column; a header row with the name and tabs (Home / Research / Data & Projects / CV).
+     Home = photo + welcome + contact facts (the Bay-theme pattern of Sooa Ahn's site);
+     Data & Projects = one entry per dataset with a codebook-style spec block. */
+  :root {
+    --bg: #fbfcfd;
+    --surface: #f1f4f7;
+    --ink: #18202b;
+    --muted: #5b6574;
+    --line: #dde3ea;
+    --accent: #0d5b74;
+    --accent-soft: #e2eef2;
+    --f-display: "Newsreader", Georgia, "Times New Roman", serif;
+    --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #10151c; --surface: #161d26; --ink: #e3e8ee; --muted: #98a3b2;
+      --line: #283240; --accent: #74bfd8; --accent-soft: #15303b;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #10151c; --surface: #161d26; --ink: #e3e8ee; --muted: #98a3b2;
+    --line: #283240; --accent: #74bfd8; --accent-soft: #15303b;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 16.5px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+  .wrap {
+    max-width: 46rem;
+    margin-inline: auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+  a:hover { text-decoration-color: currentColor; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+  /* ---------- header ---------- */
+  .site-head { border-bottom: 1px solid var(--line); }
+  .head-row {
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+    gap: 0.5rem 1.5rem; padding-block: 1.5rem 1rem;
+  }
+  .brand {
+    font-family: var(--f-display); font-size: 1.35rem; font-weight: 600;
+    color: var(--ink); text-decoration: none;
+  }
+  nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+  nav a {
+    color: var(--muted); text-decoration: none; font-size: 0.95rem;
+    padding-block: 0.15rem; border-bottom: 2px solid transparent;
+  }
+  nav a:hover { color: var(--ink); }
+  nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+
+  /* ---------- type ---------- */
+  main { padding-block: 2.5rem 4rem; }
+  h1 {
+    font-family: var(--f-display); font-weight: 500; font-size: 2.05rem; line-height: 1.15;
+    margin: 0 0 0.9rem; text-wrap: balance;
+  }
+  h2 {
+    font-family: var(--f-display); font-weight: 500; font-size: 1.4rem; line-height: 1.25;
+    margin: 2.75rem 0 0.25rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--line);
+    text-wrap: balance;
+  }
+  p { margin: 0 0 1rem; max-width: 65ch; }
+  .muted { color: var(--muted); }
+  dt {
+    font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+
+  /* ---------- home ---------- */
+  .intro { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 2rem; align-items: start; }
+  .avatar {
+    width: 8.5rem; max-width: 100%; aspect-ratio: 1; border-radius: 50%;
+    background: var(--accent-soft); border: 1px solid var(--line);
+    display: grid; place-items: center;
+    font-family: var(--f-display); font-size: 2.6rem; color: var(--accent); letter-spacing: 0.04em;
+  }
+  .intro-text { min-width: 0; }
+  .mentor-note { color: var(--muted); font-size: 0.95rem; margin: 1rem 0 0.6rem; }
+  .names { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
+  .names li { font-weight: 600; }
+  @media (max-width: 560px) {
+    .intro { grid-template-columns: 1fr; gap: 1.25rem; }
+    .avatar { width: 6.5rem; font-size: 2rem; }
+    h1 { font-size: 1.75rem; }
+  }
+
+  .facts { display: grid; gap: 0.65rem; margin: 2rem 0 0; padding-block: 1.1rem; border-block: 1px solid var(--line); }
+  .facts > div { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 1rem; align-items: baseline; }
+  @media (max-width: 420px) { .facts > div { grid-template-columns: 1fr; gap: 0.1rem; } }
+  .copy {
+    font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.04em;
+    margin-left: 0.5rem; padding: 0.12rem 0.6rem;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: transparent; color: var(--muted); cursor: pointer;
+  }
+  .copy:hover { color: var(--accent); border-color: var(--accent); }
+
+  .jmp-teaser {
+    display: block; margin-top: 2rem; padding: 1.25rem 1.4rem;
+    border: 1px solid var(--line); border-radius: 12px; background: var(--surface);
+    color: var(--ink); text-decoration: none;
+  }
+  .jmp-teaser:hover { border-color: var(--accent); }
+  .eyebrow {
+    display: block; font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 0.45rem;
+  }
+  .teaser-title { display: block; font-family: var(--f-display); font-size: 1.25rem; line-height: 1.3; font-weight: 500; text-wrap: balance; }
+  .teaser-line { display: block; color: var(--muted); margin-top: 0.5rem; max-width: 62ch; }
+  .teaser-more { display: block; margin-top: 0.8rem; color: var(--accent); font-size: 0.92rem; }
+
+  .refs { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1.1rem; }
+  .refs li { display: grid; gap: 0.1rem; }
+  .ref-name { font-weight: 600; }
+  .ref-role { color: var(--muted); font-size: 0.95rem; }
+  .ref-mail { font-family: var(--f-mono); font-size: 0.84rem; color: var(--ink); }
+
+  /* ---------- research ---------- */
+  .jmp { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 1.5rem; margin-top: 1rem; }
+  .paper-title { font-family: var(--f-display); font-weight: 500; font-size: 1.32rem; line-height: 1.28; margin: 0 0 0.35rem; text-wrap: balance; }
+  .meta { font-family: var(--f-mono); font-size: 0.78rem; color: var(--muted); margin: 0 0 0.9rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+  .btn {
+    display: inline-block; font-size: 0.88rem; padding: 0.35rem 0.95rem;
+    border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); text-decoration: none;
+  }
+  .btn:hover { background: var(--accent); color: var(--bg); }
+
+  .result {
+    display: grid; grid-template-columns: 10.5rem minmax(0, 1fr); gap: 1.5rem; align-items: start;
+    padding-block: 1.1rem; border-block: 1px solid var(--line); margin-bottom: 1.1rem;
+  }
+  @media (max-width: 600px) { .result { grid-template-columns: 1fr; gap: 1rem; } }
+  .stat { display: grid; gap: 0.35rem; }
+  .stat-num { font-family: var(--f-display); font-size: 2.7rem; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .stat-label { font-size: 0.92rem; line-height: 1.4; }
+  .stat-src { font-family: var(--f-mono); font-size: 0.72rem; color: var(--muted); line-height: 1.45; }
+  figure.es { margin: 0; min-width: 0; }
+  .es svg { display: block; width: 100%; max-width: 100%; height: auto; }
+  .es figcaption { font-size: 0.8rem; color: var(--muted); line-height: 1.45; margin-top: 0.4rem; }
+  .es .grid { stroke: var(--line); stroke-width: 1; }
+  .es .zero { stroke: var(--muted); stroke-width: 1; opacity: 0.55; }
+  .es .exp { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
+  .es .path { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+  .es .pt { fill: var(--accent); }
+  .es .ref { fill: var(--surface); stroke: var(--accent); stroke-width: 1.5; }
+  .es text { font-family: var(--f-mono); font-size: 9px; fill: var(--muted); }
+  .abstract { font-size: 0.98rem; margin: 0; }
+
+  .papers { display: grid; }
+  .paper { padding-block: 1rem; }
+  .paper + .paper { border-top: 1px solid var(--line); }
+  .paper .t { font-family: var(--f-display); font-size: 1.12rem; font-weight: 500; line-height: 1.35; margin: 0 0 0.25rem; text-wrap: balance; }
+  .paper .by { font-size: 0.95rem; margin: 0; }
+  .paper .where { color: var(--muted); font-size: 0.92rem; margin: 0.1rem 0 0; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+  .chip {
+    font-family: var(--f-mono); font-size: 0.75rem; padding: 0.12rem 0.65rem;
+    border: 1px solid var(--line); border-radius: 999px; color: var(--muted); text-decoration: none;
+  }
+  .chip:hover { color: var(--accent); border-color: var(--accent); }
+  details { margin-top: 0.5rem; }
+  summary { cursor: pointer; color: var(--accent); font-family: var(--f-mono); font-size: 0.8rem; letter-spacing: 0.03em; width: fit-content; }
+  details p { margin: 0.5rem 0 0; font-size: 0.95rem; }
+
+  /* ---------- dated rows (education, positions, talks) ---------- */
+  .rows { display: grid; }
+  .row { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 1rem; padding-block: 0.85rem; }
+  .row + .row { border-top: 1px solid var(--line); }
+  .when { font-family: var(--f-mono); font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 0.2rem; }
+  .what { min-width: 0; }
+  .what strong { font-weight: 600; }
+  .what .sub { color: var(--muted); font-size: 0.93rem; margin: 0.15rem 0 0; }
+  @media (max-width: 480px) { .row { grid-template-columns: 1fr; gap: 0.15rem; } }
+
+  /* ---------- data & projects ---------- */
+  .lede { font-size: 1.05rem; max-width: 62ch; }
+  .scale {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem;
+    margin: 1.5rem 0 0; padding-block: 1rem; border-block: 1px solid var(--line);
+  }
+  @media (max-width: 640px) { .scale { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .scale > div { display: grid; gap: 0.2rem; align-content: start; min-width: 0; }
+  .scale .n { font-family: var(--f-display); font-size: 1.75rem; line-height: 1.05; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .scale .l { font-size: 0.82rem; color: var(--muted); line-height: 1.35; }
+
+  .proj { padding-block: 1.3rem; }
+  .proj + .proj { border-top: 1px solid var(--line); }
+  .proj-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1rem; }
+  .proj h3 { font-family: var(--f-display); font-weight: 500; font-size: 1.2rem; line-height: 1.3; margin: 0; text-wrap: balance; min-width: 0; }
+  .proj .role { font-size: 0.92rem; color: var(--muted); margin: 0.2rem 0 0.65rem; }
+  .proj .desc { margin: 0 0 0.8rem; }
+  .spec {
+    display: grid; gap: 0.45rem; margin: 0; padding: 0.85rem 1rem;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+  }
+  .spec > div { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 0.9rem; align-items: baseline; }
+  .spec dd { font-size: 0.92rem; }
+  @media (max-width: 420px) { .spec > div { grid-template-columns: 1fr; gap: 0.05rem; } }
+
+  .tools { display: grid; gap: 0.55rem; margin: 1rem 0 0; }
+  .tools > div { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 1rem; align-items: baseline; }
+  .tools dd { font-size: 0.95rem; }
+  @media (max-width: 480px) { .tools > div { grid-template-columns: 1fr; gap: 0.05rem; } }
+
+  /* ---------- footer ---------- */
+  .site-foot { border-top: 1px solid var(--line); background: var(--surface); }
+  .foot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; padding-block: 2rem 1rem; }
+  @media (max-width: 480px) { .foot-grid { grid-template-columns: 1fr; } }
+  .foot-h {
+    font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 0.6rem; font-weight: 500;
+  }
+  .site-foot p { margin: 0 0 0.35rem; font-size: 0.92rem; }
+  .foot-note { font-size: 0.8rem; color: var(--muted); padding-block: 0 2rem; }
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="#home">Xixian Niu</a>
+    <nav aria-label="Main">
+      <a href="#home" data-tab="home" aria-current="page">Home</a>
+      <a href="#research" data-tab="research">Research</a>
+      <a href="#data" data-tab="data">Data &amp; Projects</a>
+      <a href="CV_Xixian_Niu.pdf" target="_blank" rel="noopener">CV</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ===================== HOME ===================== -->
+  <section id="home" data-section>
+    <div class="intro">
+      <!-- Replace with your photo: <img class="avatar" src="photo.jpg" alt="Xixian Niu"> -->
+      <div class="avatar" aria-hidden="true">XN</div>
+      <div class="intro-text">
+        <h1>Welcome to Xixian Niu’s website</h1>
+        <p>
+          I am a Ph.D. candidate in Economics at ECARES and I3h, Université Libre de Bruxelles,
+          advised by Micael Castanheira and Mathias Dewatripont. I study the economics of innovation,
+          health economics, and industrial organization, with a focus on how patents, regulatory
+          exclusivity, and public policy shape pharmaceutical R&amp;D.
+        </p>
+      </div>
+    </div>
+
+    <dl class="facts">
+      <div>
+        <dt>Email</dt>
+        <dd><a href="mailto:xixian_niu@outlook.com" id="email">xixian_niu@outlook.com</a><button type="button" class="copy" id="copy-email">Copy</button></dd>
+      </div>
+      <div>
+        <dt>CV</dt>
+        <dd><a href="CV_Xixian_Niu.pdf" target="_blank" rel="noopener">Curriculum vitae (PDF)</a></dd>
+      </div>
+      <div>
+        <dt>Office</dt>
+        <dd>ECARES, Université Libre de Bruxelles, Brussels</dd>
+      </div>
+      <div>
+        <dt>Fields</dt>
+        <dd>Economics of innovation · Health economics · Industrial organization<br>
+          <span class="muted">Secondary: applied microeconomics, applied econometrics</span></dd>
+      </div>
+    </dl>
+
+    <a class="jmp-teaser" href="#research">
+      <span class="eyebrow">Job market paper</span>
+      <span class="teaser-title">Asymmetric Intellectual Property and Follow-on Innovation: Evidence from Drug Repurposing</span>
+      <span class="teaser-line">A broad patent on a drug is a gate that follow-on innovators must license through, and also the shield that protects their new use from imitation. One more year of exclusivity raises expected repurposing by about 25 percent.</span>
+      <span class="teaser-more">Abstract, paper and results →</span>
+    </a>
+
+    <h2>Mentoring</h2>
+    <p class="mentor-note">Master’s thesis co-supervision with Hilde Stevens, I3h, Université Libre de Bruxelles</p>
+    <ul class="names">
+      <li>Alessandro Giarrizzo</li>
+      <li>Nour Hammoudi</li>
+    </ul>
+
+    <h2>References</h2>
+    <ul class="refs">
+      <li>
+        <span class="ref-name">Micael Castanheira</span>
+        <span class="ref-role">FNRS Research Director and Professor, ECARES, Université Libre de Bruxelles</span>
+        <span class="ref-mail">micael.castanheira@ulb.be</span>
+      </li>
+      <li>
+        <span class="ref-name">Mathias Dewatripont</span>
+        <span class="ref-role">Professor of Economics, ECARES, Université Libre de Bruxelles</span>
+        <span class="ref-mail">mathias.dewatripont@ulb.be</span>
+      </li>
+      <li>
+        <span class="ref-name">Mattia Nardotto</span>
+        <span class="ref-role">Associate Professor of Economics, ECARES, Université Libre de Bruxelles</span>
+        <span class="ref-mail">mattia.nardotto@ulb.be</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===================== RESEARCH ===================== -->
+  <section id="research" data-section hidden>
+    <h1>Research</h1>
+
+    <h2>Job market paper</h2>
+    <article class="jmp">
+      <h3 class="paper-title">Asymmetric Intellectual Property and Follow-on Innovation: Evidence from Drug Repurposing</h3>
+      <p class="meta">Solo-authored · Latest draft August 2026</p>
+      <div class="actions">
+        <a class="btn" href="JMP_Xixian_Niu.pdf" target="_blank" rel="noopener">Paper (PDF)</a>
+      </div>
+
+      <div class="result">
+        <div class="stat">
+          <span class="stat-num">+25%</span>
+          <span class="stat-label">expected repurposing per additional year of effective exclusivity</span>
+          <span class="stat-src">IV-Poisson, 222 FDA-approved molecules, 1985–2024</span>
+        </div>
+        <figure class="es">
+          <svg viewBox="0 0 344 152" role="img" aria-labelledby="es-title">
+            <title id="es-title">Entrant repurposing approvals by year relative to loss of exclusivity</title>
+            <line class="grid" x1="36" x2="328" y1="14" y2="14"/>
+            <line class="zero" x1="36" x2="328" y1="43.7" y2="43.7"/>
+            <line class="grid" x1="36" x2="328" y1="73.4" y2="73.4"/>
+            <line class="grid" x1="36" x2="328" y1="103.1" y2="103.1"/>
+            <text x="29" y="17" text-anchor="end">1</text>
+            <text x="29" y="46.7" text-anchor="end">0</text>
+            <text x="29" y="76.4" text-anchor="end">−1</text>
+            <text x="29" y="106.1" text-anchor="end">−2</text>
+            <line class="exp" x1="182" x2="182" y1="6" y2="122"/>
+            <text x="187" y="11" text-anchor="start">loss of exclusivity</text>
+            <polyline class="path" points="36,27.3 65.2,33.2 94.4,32.3 123.6,25.5 152.8,43.7 182,61.7 211.2,54.8 240.4,57.6 269.6,92.2 298.8,74.9 328,112.5"/>
+            <circle class="pt" cx="36" cy="27.3" r="3"/>
+            <circle class="pt" cx="65.2" cy="33.2" r="3"/>
+            <circle class="pt" cx="94.4" cy="32.3" r="3"/>
+            <circle class="pt" cx="123.6" cy="25.5" r="3"/>
+            <circle class="ref" cx="152.8" cy="43.7" r="3"/>
+            <circle class="pt" cx="182" cy="61.7" r="3"/>
+            <circle class="pt" cx="211.2" cy="54.8" r="3"/>
+            <circle class="pt" cx="240.4" cy="57.6" r="3"/>
+            <circle class="pt" cx="269.6" cy="92.2" r="3"/>
+            <circle class="pt" cx="298.8" cy="74.9" r="3"/>
+            <circle class="pt" cx="328" cy="112.5" r="3"/>
+            <text x="36" y="136" text-anchor="middle">≤−5</text>
+            <text x="152.8" y="136" text-anchor="middle">−1</text>
+            <text x="182" y="136" text-anchor="middle">0</text>
+            <text x="328" y="136" text-anchor="middle">≥+5</text>
+            <text x="182" y="149" text-anchor="middle">years relative to loss of exclusivity</text>
+          </svg>
+          <figcaption>Entrant repurposing approvals, fixed-effects Poisson coefficients (log points) relative to the year before expiry, balanced five-year window. Approvals fall into expiry and do not rebound after it.</figcaption>
+        </figure>
+      </div>
+
+      <p class="abstract">
+        Patent protection over a redeployed technology is vertically asymmetric: a follow-on innovator’s patent
+        reaches only the new use, never the technology beneath it. The broad upstream patent is therefore not
+        merely a gate the follow-on licenses through, but a shield it sells behind, since imitating the follow-on
+        infringes the upstream patent for as long as it stands. Longer upstream protection can consequently raise
+        follow-on innovation rather than deter it, reversing the prediction of the symmetric benchmark in the
+        literature. Using a new dataset of all FDA-approved new molecular entities, 1985–2024, and instrumenting
+        exclusivity with the patent-filing-to-trial gap, I estimate that an additional year of protection raises
+        expected repurposing by roughly twenty-five percent, with the effect strongest precisely where the shield
+        rather than the gate should bind.
+      </p>
+    </article>
+
+    <h2>Publications</h2>
+    <div class="papers">
+      <div class="paper">
+        <p class="t">Do Policy Incentives Align with Pharmaceutical Innovation Challenges? A Retrospective Analysis of 42 Countries, 2000–2022</p>
+        <p class="by">with S. Mermelstein, A. Gentilini, C. Yue, M. Shaikh, M. Dewatripont, H. Stevens, and M. Miraldo</p>
+        <p class="where"><em>Health Economics</em>, forthcoming 2027</p>
+        <details>
+          <summary>Abstract</summary>
+          <p>We assemble the first systematic dataset of 1,078 pharmaceutical innovation policies across 42 countries and 163 diseases (2000–2022), decomposing each policy into underlying features to move beyond the conventional push–pull distinction. Push and pull incentives prove similarly allocated, both concentrating in scientifically difficult areas with heavy academic and small-firm involvement. At the feature level, however, allocation diverges: financial and risk-sharing incentives follow scientific difficulty, expedited regulatory pathways follow disease severity and treatment scarcity rather than total burden, and knowledge-pooling and access conditions remain narrowly used. Policy activity clusters in high-income settings and in cancers and rare diseases, leaving antimicrobial resistance and maternal and neonatal conditions persistently underserved.</p>
+        </details>
+      </div>
+      <div class="paper">
+        <p class="t">Impact of Drug Repurposing between 1985 and 2024 on Pharmaceutical Innovation</p>
+        <p class="by">with S. Akodad, B. Secades, and H. Stevens</p>
+        <p class="where"><em>Communications Medicine</em> 6: 84, 2026</p>
+        <div class="links">
+          <a class="chip" href="https://doi.org/10.1038/s43856-025-01344-1" target="_blank" rel="noopener">DOI</a>
+        </div>
+      </div>
+    </div>
+
+    <h2>Working papers</h2>
+    <div class="papers">
+      <div class="paper">
+        <p class="t">Unbundling Global Innovation Policies: Mechanism Effects, Spillovers, and the Equitable Allocation of Pharmaceutical R&amp;D</p>
+        <p class="by">with C. Yue, S. Mermelstein, M. Miraldo, H. Stevens, M. Shaikh, and M. Dewatripont</p>
+        <details>
+          <summary>Abstract</summary>
+          <p>Innovation policies bundle several incentive mechanisms with offsetting effects, so estimated policy-level effects identify no single margin. Decomposing 1,100 policy introductions into six mechanisms and linking them to 1.9 million R&amp;D grants across 42 countries (2000–2021), we exploit within-policy variation in mechanism composition to separate own-country effects, cross-country spillovers, and allocation relative to disease burden. Revenue subsidies raise R&amp;D but redirect it toward commercially lucrative diseases and high-income markets, widening the gap between private and social returns. Mechanisms that lower regulatory and information frictions yield larger and more persistent gains, concentrated where profit incentives are weakest, and generate positive spillovers across borders. Mandated IP-sharing lowers appropriability and depresses short-run entry. Success-contingent rewards dominate unconditional transfers, consistent with reduced moral hazard and better selection.</p>
+        </details>
+      </div>
+    </div>
+
+    <h2>Work in progress</h2>
+    <div class="papers">
+      <div class="paper">
+        <p class="t">Patent Box Tax Relief and Orphan Drug Development</p>
+        <details>
+          <summary>Abstract</summary>
+          <p>Nine EU countries have extended preferential IP-box tax rates to orphan-drug income since 2015. Using difference-in-differences on a firm–country–year panel of 78,060 observations across 30 EMA member states (2000–2024), I find that adoption raises orphan-drug launches by roughly 75 percent. The effect is confined to large firms, with no response from SMEs and no increase in designations or registrations, indicating that the policy stimulates commercialization rather than innovation.</p>
+        </details>
+      </div>
+    </div>
+
+    <h2>Policy report</h2>
+    <div class="papers">
+      <div class="paper">
+        <p class="t">Incentives for Pharmaceutical Innovation and Equitable Access to Innovation</p>
+        <p class="by">with M. Miraldo, H. Stevens, C. Yue, S. Mermelstein, A. Gentilini, M. Shaikh, and M. Dewatripont</p>
+        <p class="where">Policy report for the Horizon Europe Hi-Prix project, 2026</p>
+      </div>
+    </div>
+
+    <h2>Presentations</h2>
+    <div class="rows">
+      <div class="row">
+        <div class="when">2026</div>
+        <div class="what">European Winter Meeting of the Econometric Society, Warsaw (forthcoming)</div>
+      </div>
+      <div class="row">
+        <div class="when">2025</div>
+        <div class="what">Hi-Prix Consortium Annual Conference, Brussels (poster)</div>
+      </div>
+      <div class="row">
+        <div class="when">2024</div>
+        <div class="what">Hi-Prix Consortium Annual Conference, Lisbon</div>
+      </div>
+    </div>
+
+    <h2>Fellowships</h2>
+    <div class="rows">
+      <div class="row">
+        <div class="when">2023 – 2026</div>
+        <div class="what">Ph.D. Fellowship, Horizon Europe Hi-Prix project
+          <p class="sub">One of two doctoral positions funded by the consortium.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DATA & PROJECTS ===================== -->
+  <section id="data" data-section hidden>
+    <h1>Data &amp; Projects</h1>
+    <p class="lede">
+      Most of my research rests on datasets I built or co-built: collected from regulatory records, national legislation,
+      commercial APIs and expert interviews, harmonised across countries, and linked at the scale of millions of records.
+    </p>
+
+    <div class="scale">
+      <div><span class="n">1,342</span><span class="l">FDA-approved molecules tracked, 1985–2024</span></div>
+      <div><span class="n">1,078</span><span class="l">innovation policies coded across 42 countries</span></div>
+      <div><span class="n">1.9M</span><span class="l">R&amp;D grants linked to policy changes</span></div>
+      <div><span class="n">78,060</span><span class="l">firm–country–years on orphan drugs</span></div>
+    </div>
+
+    <h2>Datasets and projects</h2>
+
+    <article class="proj">
+      <div class="proj-head">
+        <h3>Cross-country pharmaceutical innovation policy database</h3>
+        <span class="when">2023 – 2026</span>
+      </div>
+      <p class="role">Core contributor, Hi-Prix Work Package 7 (Horizon Europe), Brussels</p>
+      <p class="desc">
+        Co-built the first systematic database of pharmaceutical innovation policies, harmonising heterogeneous
+        national measures into a common taxonomy of incentive mechanisms, and linked it to disease-level R&amp;D
+        indicators from the preclinical stage to launch. I designed questionnaires and interviewed health technology
+        assessment specialists from universities, agencies and companies to validate entries and close gaps in the data.
+      </p>
+      <dl class="spec">
+        <div><dt>Coverage</dt><dd>1,078 policies · 42 countries · 163 diseases · 2000–2022</dd></div>
+        <div><dt>Policies</dt><dd>R&amp;D grants and tax credits, IP-box regimes, health technology assessment, expedited review, public–private partnerships</dd></div>
+        <div><dt>Validation</dt><dd>Expert questionnaires and interviews in 15 countries, including Norway, Germany, Sweden and Australia</dd></div>
+        <div><dt>Project</dt><dd>Co-led by ULB and Imperial College London; €5.3M, 18 partner organizations in 10 countries</dd></div>
+        <div><dt>Used in</dt><dd><em>Health Economics</em> (forthcoming); “Unbundling Global Innovation Policies”; Hi-Prix policy report</dd></div>
+      </dl>
+    </article>
+
+    <article class="proj">
+      <div class="proj-head">
+        <h3>FDA drug approvals, patents and exclusivity database</h3>
+        <span class="when">2023 – present</span>
+      </div>
+      <p class="role">Researcher, ECARES, Brussels</p>
+      <p class="desc">
+        Every new molecular entity approved by the FDA since 1985, linked to its patent terms, regulatory exclusivities
+        and later repurposing events. I extended the NBER Orange Book files through 2024 by parsing thousands of Orange
+        Book and patent-term-extension documents in Python, and designed and documented the exclusivity and repurposing measures.
+      </p>
+      <dl class="spec">
+        <div><dt>Coverage</dt><dd>1,342 molecules, 1985–2024</dd></div>
+        <div><dt>Sources</dt><dd>FDA Orange Book annual editions, USPTO patent-term-extension records, NBER Orange Book files</dd></div>
+        <div><dt>Methods</dt><dd>PDF text extraction; LLM-assisted matching of firms through subsidiaries and acquisitions, cross-checked by a second model and hand audits</dd></div>
+        <div><dt>Used in</dt><dd>Job market paper; <em>Communications Medicine</em> (2026)</dd></div>
+      </dl>
+    </article>
+
+    <article class="proj">
+      <div class="proj-head">
+        <h3>Pharmaceutical R&amp;D data infrastructure</h3>
+        <span class="when">2023 – 2024</span>
+      </div>
+      <p class="role">Lead developer, cross-project, Brussels</p>
+      <p class="desc">
+        A linked database of publications, patents, grants, clinical trials and R&amp;D milestone events, collected
+        through APIs and matched through citation links and disease classification, with server-based pipelines
+        from collection to analysis-ready tables.
+      </p>
+      <dl class="spec">
+        <div><dt>Scale</dt><dd>Millions of records across publications, patents, grants, trials and milestones</dd></div>
+        <div><dt>Sources</dt><dd>Dimensions and Cortellis APIs</dd></div>
+        <div><dt>Linkage</dt><dd>Citation links; ICD-11 disease classification</dd></div>
+        <div><dt>Stack</dt><dd>Python and R on a research server</dd></div>
+      </dl>
+    </article>
+
+    <article class="proj">
+      <div class="proj-head">
+        <h3>Patent-box tax regimes and orphan drugs</h3>
+        <span class="when">2023 – present</span>
+      </div>
+      <p class="role">Researcher, ECARES, Brussels</p>
+      <p class="desc">
+        A country–year panel of preferential IP-box tax regimes across EMA member states, assembled from national
+        legislation, OECD reports and professional tax guides, and merged with firm-level data on orphan-drug trials,
+        designations, approvals and launches.
+      </p>
+      <dl class="spec">
+        <div><dt>Coverage</dt><dd>30 EMA member states, 2000–2024; 78,060 firm–country–year observations</dd></div>
+        <div><dt>Sources</dt><dd>National tax legislation, OECD reports, professional tax guides; Cortellis</dd></div>
+        <div><dt>Used in</dt><dd>“Patent Box Tax Relief and Orphan Drug Development” (work in progress)</dd></div>
+      </dl>
+    </article>
+
+    <h2>Earlier experience</h2>
+    <div class="rows">
+      <div class="row">
+        <div class="when">2023 – 2024</div>
+        <div class="what"><strong>Visiting Researcher</strong>, Imperial College London
+          <p class="sub">Centre for Health Economics and Policy Innovation, hosted by Marisa Miraldo. Year-long visit working on the 42-country policy project.</p></div>
+      </div>
+      <div class="row">
+        <div class="when">2021 – 2022</div>
+        <div class="what"><strong>Research Intern</strong>, Fair Division project, Paris 1 Panthéon-Sorbonne
+          <p class="sub">Supervised by Hervé Moulin.</p></div>
+      </div>
+      <div class="row">
+        <div class="when">2019</div>
+        <div class="what"><strong>Data Analyst</strong>, Xiamen Lianzhidao Information Service, Xiamen
+          <p class="sub">Crypto-market intelligence start-up. Built a rating model with LASSO and random-forest feature selection across hundreds of candidate variables; scraped social-media data for a monthly client market report.</p></div>
+      </div>
+    </div>
+
+    <h2>Toolkit</h2>
+    <dl class="tools">
+      <div><dt>Programming</dt><dd>Python, R, Stata, Quarto / R Markdown, LaTeX; SQL and Git (basic)</dd></div>
+      <div><dt>Data collection</dt><dd>APIs (Dimensions, Cortellis); web scraping (Requests, BeautifulSoup, Selenium); PDF and LLM-assisted text extraction; record linkage at million-record scale</dd></div>
+      <div><dt>Methods</dt><dd>Panel data; difference-in-differences; instrumental variables, including shift-share; regression discontinuity; synthetic control; LASSO and random forests</dd></div>
+      <div><dt>Domain data</dt><dd>FDA Orange Book and patent-term-extension records; EMA orphan designations; Cortellis; Dimensions; ICD-11</dd></div>
+      <div><dt>Languages</dt><dd>Chinese (native), English (fluent)</dd></div>
+    </dl>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-grid">
+    <div>
+      <p class="foot-h">Contact</p>
+      <p>xixian_niu@outlook.com</p>
+      <p>ECARES, Université Libre de Bruxelles<br>Brussels, Belgium</p>
+    </div>
+    <div>
+      <p class="foot-h">Documents</p>
+      <p><a href="CV_Xixian_Niu.pdf" target="_blank" rel="noopener">Curriculum vitae</a></p>
+      <p><a href="JMP_Xixian_Niu.pdf" target="_blank" rel="noopener">Job market paper</a></p>
+    </div>
+  </div>
+  <div class="wrap foot-note">Last updated October 2026</div>
+</footer>
+
+<script>
+  (function () {
+    var tabs = ["home", "research", "data"];
+    var sections = document.querySelectorAll("[data-section]");
+    var links = document.querySelectorAll("nav a[data-tab]");
+
+    function show(id, scroll) {
+      if (tabs.indexOf(id) < 0) id = "home";
+      sections.forEach(function (s) { s.hidden = s.id !== id; });
+      links.forEach(function (a) {
+        if (a.getAttribute("data-tab") === id) a.setAttribute("aria-current", "page");
+        else a.removeAttribute("aria-current");
+      });
+      if (scroll) window.scrollTo(0, 0);
+    }
+    window.addEventListener("hashchange", function () { show(location.hash.slice(1), true); });
+    show(location.hash.slice(1), false);
+
+    var btn = document.getElementById("copy-email");
+    var addr = "xixian_niu@outlook.com";
+    function done(label) {
+      btn.textContent = label;
+      setTimeout(function () { btn.textContent = "Copy"; }, 1800);
+    }
+    function selectAddress() {
+      var range = document.createRange();
+      range.selectNodeContents(document.getElementById("email"));
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      done("Selected");
+    }
+    btn.addEventListener("click", function () {
+      try {
+        navigator.clipboard.writeText(addr).then(function () { done("Copied"); }, selectAddress);
+      } catch (e) { selectAddress(); }
+    });
+  })();
+</script>
+</body>
+</html>
