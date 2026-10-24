@@ -145,11 +145,6 @@
   .teaser-line { display: block; color: var(--muted); margin-top: 0.5rem; max-width: 62ch; }
   .teaser-more { display: block; margin-top: 0.8rem; color: var(--accent); font-size: 0.92rem; }
 
-  .refs { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1.1rem; }
-  .refs li { display: grid; gap: 0.1rem; }
-  .ref-name { font-weight: 600; }
-  .ref-role { color: var(--muted); font-size: 0.95rem; }
-  .ref-mail { font-family: var(--f-mono); font-size: 0.84rem; color: var(--ink); }
 
   /* ---------- research ---------- */
   .jmp { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 1.5rem; margin-top: 1rem; }
@@ -178,7 +173,14 @@
   .r-num { font-family: var(--f-display); font-size: 1.3rem; line-height: 1.1; color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
   .r-txt { font-size: 0.9rem; line-height: 1.45; min-width: 0; }
   .r-sig { margin-left: 0.35rem; font-family: var(--f-mono); font-size: 0.7rem; color: var(--muted); white-space: nowrap; }
+  .paper-fig { margin: 0 0 1.25rem; min-width: 0; }
+  .paper-fig a { display: block; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .paper-fig img { display: block; width: 100%; max-width: 100%; height: auto; }
+  .paper-fig figcaption { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-top: 0.55rem; max-width: 70ch; }
+  .paper-fig figcaption strong { color: var(--ink); font-weight: 600; }
   .abstract { font-size: 0.98rem; margin: 0; }
+  .keywords { margin: 0.9rem 0 0; font-size: 0.88rem; line-height: 1.6; color: var(--muted); }
+  .keywords strong { color: var(--ink); font-weight: 600; }
 
   .papers { display: grid; }
   .paper { padding-block: 1rem; }
@@ -213,6 +215,7 @@
   .proj { padding-block: 1.3rem; }
   .proj + .proj { border-top: 1px solid var(--line); }
   .proj-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1rem; }
+  .proj-head .t { flex: 1 1 0; min-width: 0; }
   .proj h3 { font-family: var(--f-display); font-weight: 500; font-size: 1.2rem; line-height: 1.3; margin: 0; text-wrap: balance; min-width: 0; }
   .proj .role { font-size: 0.92rem; color: var(--muted); margin: 0.2rem 0 0.65rem; }
   .proj .desc { margin: 0 0 0.8rem; }
@@ -249,6 +252,7 @@
       <a href="#home" data-tab="home" aria-current="page">Home</a>
       <a href="#research" data-tab="research">Research</a>
       <a href="#data" data-tab="data">Data &amp; Projects</a>
+      <a href="#supervision" data-tab="supervision">Supervision</a>
     </nav>
   </div>
 </header>
@@ -264,7 +268,8 @@
         <h1>Welcome to Xixian Niu’s website</h1>
         <p>
           I am a Ph.D. candidate in Economics at ECARES and I3h, Université Libre de Bruxelles,
-          advised by Micael Castanheira and Mathias Dewatripont. I study the economics of innovation,
+          advised by <a href="https://sites.google.com/site/micaelcastanheiraswebsite/" target="_blank" rel="noopener">Micael Castanheira</a>
+          and <a href="https://ecares.ulb.be/wp-content/uploads/2024/04/CV-Mathias-Dewatripont-April-2024.pdf" target="_blank" rel="noopener">Mathias Dewatripont</a>. I study the economics of innovation,
           health economics, and industrial organization, with a focus on how patents, regulatory
           exclusivity, and public policy shape pharmaceutical R&amp;D.
         </p>
@@ -297,25 +302,6 @@
       <span class="teaser-line">A broad patent on a drug is a gate that follow-on innovators must license through, and also the shield that protects their new use from imitation. One more year of exclusivity raises expected post-approval indications by about 34 percent.</span>
       <span class="teaser-more">Abstract, paper and results →</span>
     </a>
-
-    <h2>References</h2>
-    <ul class="refs">
-      <li>
-        <span class="ref-name">Micael Castanheira</span>
-        <span class="ref-role">FNRS Research Director and Professor, ECARES, Université Libre de Bruxelles</span>
-        <span class="ref-mail">micael.castanheira@ulb.be</span>
-      </li>
-      <li>
-        <span class="ref-name">Mathias Dewatripont</span>
-        <span class="ref-role">Professor of Economics, ECARES, Université Libre de Bruxelles</span>
-        <span class="ref-mail">mathias.dewatripont@ulb.be</span>
-      </li>
-      <li>
-        <span class="ref-name">Mattia Nardotto</span>
-        <span class="ref-role">Associate Professor of Economics, ECARES, Université Libre de Bruxelles</span>
-        <span class="ref-mail">mattia.nardotto@ulb.be</span>
-      </li>
-    </ul>
   </section>
 
   <!-- ===================== RESEARCH ===================== -->
@@ -343,6 +329,14 @@
         </ul>
       </div>
 
+      <figure class="paper-fig">
+        <a href="jmp_figure1.png" target="_blank" rel="noopener"><img src="jmp_figure1.png" width="1433" height="968"
+          alt="Each row is one drug, sorted by length of market exclusivity. New indications by entrants and originators cluster before exclusivity ends and thin out after it."></a>
+        <figcaption><strong>Figure 1. Timing of new indications relative to market exclusivity.</strong>
+          200 drugs drawn at random from the 337 approved before 2014, one per row, sorted by length of market exclusivity.
+          New indications cluster in the years before exclusivity expires, decline through expiry, and do not rebound afterward.</figcaption>
+      </figure>
+
       <p class="abstract">
         Theories of cumulative innovation treat an upstream patent as a gate. This assumes symmetric protection:
         follow-on innovators can protect their own inventions from imitation. I show that when they cannot, the
@@ -355,6 +349,8 @@
         positively, as the shield predicts. The results point to a failure in the protection of new uses, not a case
         for longer patents.
       </p>
+      <p class="keywords"><strong>JEL codes:</strong> I18, L65, O31, O34<br>
+        <strong>Keywords:</strong> cumulative innovation, patents, market exclusivity, drug repurposing, generic entry</p>
     </article>
 
     <h2>Publications</h2>
@@ -495,6 +491,28 @@
       <div><dt>Languages</dt><dd>Chinese (native), English (fluent)</dd></div>
     </dl>
   </section>
+
+  <!-- ===================== SUPERVISION ===================== -->
+  <section id="supervision" data-section hidden>
+    <h1>Supervision</h1>
+    <p class="lede">Master’s students co-supervised with Hilde Stevens, I3h, Université Libre de Bruxelles.</p>
+    <div class="papers">
+      <div class="paper">
+        <div class="proj-head">
+          <p class="t">Scale-up success of life-science firms in the United States and the European Union</p>
+          <span class="when">2025</span>
+        </div>
+        <p class="by">Nour Hammoudi</p>
+      </div>
+      <div class="paper">
+        <div class="proj-head">
+          <p class="t">IP-box tax policy</p>
+          <span class="when">2024</span>
+        </div>
+        <p class="by">Alessandro Giarrizzo</p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="site-foot">
@@ -522,7 +540,14 @@
       else img.addEventListener("error", drop);
     });
 
-    var tabs = ["home", "research", "data"];
+    // Hide the paper figure if its image file is missing.
+    document.querySelectorAll(".paper-fig img").forEach(function (img) {
+      function hide() { img.closest("figure").hidden = true; }
+      if (img.complete && img.naturalWidth === 0) hide();
+      else img.addEventListener("error", hide);
+    });
+
+    var tabs = ["home", "research", "data", "supervision"];
     var sections = document.querySelectorAll("[data-section]");
     var links = document.querySelectorAll("nav a[data-tab]");
 
