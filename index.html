@@ -150,22 +150,14 @@
   .jmp { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 1.5rem; margin-top: 1rem; }
   .paper-title { font-family: var(--f-display); font-weight: 500; font-size: 1.32rem; line-height: 1.28; margin: 0 0 0.35rem; text-wrap: balance; }
   .meta { font-family: var(--f-mono); font-size: 0.78rem; color: var(--muted); margin: 0 0 0.9rem; }
-  .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+  .jmp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; margin: 0.6rem 0 1.1rem; }
+  .jmp-meta .meta { margin: 0; }
   .btn {
     display: inline-block; font-size: 0.88rem; padding: 0.35rem 0.95rem;
     border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); text-decoration: none;
   }
   .btn:hover { background: var(--accent); color: var(--bg); }
 
-  .result {
-    display: grid; grid-template-columns: 10.5rem minmax(0, 1fr); gap: 1.5rem; align-items: start;
-    padding-block: 1.1rem; border-block: 1px solid var(--line); margin-bottom: 1.1rem;
-  }
-  @media (max-width: 600px) { .result { grid-template-columns: 1fr; gap: 1rem; } }
-  .stat { display: grid; gap: 0.35rem; }
-  .stat-num { font-family: var(--f-display); font-size: 2.7rem; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
-  .stat-label { font-size: 0.92rem; line-height: 1.4; }
-  .stat-src { font-family: var(--f-mono); font-size: 0.72rem; color: var(--muted); line-height: 1.45; }
   .results { list-style: none; margin: 0; padding: 0; display: grid; min-width: 0; }
   .results li { display: grid; grid-template-columns: 4.4rem minmax(0, 1fr); gap: 0.8rem; align-items: baseline; padding-block: 0.5rem; }
   .results li:first-child { padding-top: 0; }
@@ -173,14 +165,21 @@
   .r-num { font-family: var(--f-display); font-size: 1.3rem; line-height: 1.1; color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
   .r-txt { font-size: 0.9rem; line-height: 1.45; min-width: 0; }
   .r-sig { margin-left: 0.35rem; font-family: var(--f-mono); font-size: 0.7rem; color: var(--muted); white-space: nowrap; }
-  .paper-fig { margin: 0 0 1.25rem; min-width: 0; }
+  .findings {
+    display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: 1.5rem; align-items: start;
+    margin-top: 1.25rem; padding-top: 1.1rem; border-top: 1px solid var(--line);
+  }
+  @media (max-width: 640px) { .findings { grid-template-columns: 1fr; gap: 1rem; } }
+  .findings .eyebrow { margin-bottom: 0.6rem; }
+  .paper-fig { margin: 0; min-width: 0; }
   .paper-fig a { display: block; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .paper-fig a:hover { border-color: var(--accent); }
   .paper-fig img { display: block; width: 100%; max-width: 100%; height: auto; }
-  .paper-fig figcaption { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-top: 0.55rem; max-width: 70ch; }
+  .paper-fig figcaption { font-size: 0.78rem; color: var(--muted); line-height: 1.45; margin-top: 0.45rem; }
   .paper-fig figcaption strong { color: var(--ink); font-weight: 600; }
   .abstract { font-size: 0.98rem; margin: 0; }
   .abstract + .abstract { margin-top: 0.8rem; }
-  .keywords { margin: 0.9rem 0 0; font-size: 0.88rem; line-height: 1.6; color: var(--muted); }
+  .keywords { margin: 1.1rem 0 0; font-size: 0.82rem; line-height: 1.6; color: var(--muted); }
   .keywords strong { color: var(--ink); font-weight: 600; }
 
   .papers { display: grid; }
@@ -287,7 +286,7 @@
       </div>
       <div>
         <dt>CV</dt>
-        <dd><a href="CV_Xixian_NIU.pdf" target="_blank" rel="noopener">Curriculum vitae (PDF)</a></dd>
+        <dd><a href="CV_Xixian_Niu.pdf" target="_blank" rel="noopener">Curriculum vitae (PDF)</a></dd>
       </div>
       <div>
         <dt>Office</dt>
@@ -315,32 +314,10 @@
     <h2>Job market paper</h2>
     <article class="jmp">
       <h3 class="paper-title">Asymmetric Intellectual Property Right and Follow-on Innovation: Evidence from Drug Repurposing</h3>
-      <p class="meta">Latest draft November 2026</p>
-      <div class="actions">
-        <a class="btn" href="JMP_Xixian_NIU.pdf" target="_blank" rel="noopener">Paper (PDF)</a>
+      <div class="jmp-meta">
+        <a class="btn" href="JMP_Xixian_Niu.pdf" target="_blank" rel="noopener">Paper (PDF)</a>
+        <span class="meta">Latest draft November 2026</span>
       </div>
-
-      <div class="result">
-        <div class="stat">
-          <span class="stat-num">+34%</span>
-          <span class="stat-label">expected post-approval new uses per additional year of market exclusivity</span>
-          <span class="stat-src">About 0.5 more new uses per drug on average. Instrument: FDA review time. New molecular entities approved 1985–2024.</span>
-        </div>
-        <ul class="results">
-          <li><span class="r-num">+72%</span><span class="r-txt">Originator new uses per year of exclusivity <span class="r-sig">10% level</span></span></li>
-          <li><span class="r-num">+25%</span><span class="r-txt">Entrant new uses per year of exclusivity <span class="r-sig">5% level</span></span></li>
-          <li><span class="r-num">15 yrs</span><span class="r-txt">The marginal effect is largest at short exclusivity and indistinguishable from zero beyond this length</span></li>
-        </ul>
-      </div>
-
-      <figure class="paper-fig">
-        <a href="jmp_fig_new_uses.png" target="_blank" rel="noopener"><img src="jmp_fig_new_uses.png"
-          alt="Each row is one drug, sorted by length of market exclusivity. New uses by originators and entrants concentrate before market exclusivity ends."></a>
-        <figcaption><strong>Figure 1. Timing of new uses relative to market exclusivity.</strong>
-          200 drugs drawn at random from the 356 new molecular entities approved in the US before 2016, one per row,
-          sorted by length of market exclusivity. 85 percent of new uses are added before market exclusivity expires;
-          of the 15 percent added after expiry, 84 percent come from entrants.</figcaption>
-      </figure>
 
       <p class="abstract">
         Upstream patents are traditionally viewed as “gate” taxing follow-on innovation, as downstream innovators
@@ -357,8 +334,25 @@
         findings support the “shield” view and highlight a fundamental failure in delineating secondary property
         rights for drug’s new uses.
       </p>
-      <p class="keywords"><strong>JEL codes:</strong> I18, L65, O31, O34<br>
-        <strong>Keywords:</strong> cumulative innovation, patents, market exclusivity, drug repurposing, generic entry</p>
+      <div class="findings">
+        <div>
+          <p class="eyebrow">Effect of one more year of market exclusivity</p>
+          <ul class="results">
+            <li><span class="r-num">+34%</span><span class="r-txt">on all new uses, about 0.5 more per drug</span></li>
+            <li><span class="r-num">+25%</span><span class="r-txt">on new uses by entrants <span class="r-sig">5% level</span></span></li>
+            <li><span class="r-num">+72%</span><span class="r-txt">on new uses by originators <span class="r-sig">10% level</span></span></li>
+            <li><span class="r-num">15 yrs</span><span class="r-txt">beyond this length, no measurable effect</span></li>
+          </ul>
+        </div>
+        <figure class="paper-fig">
+          <a href="jmp_fig_new_uses.png" target="_blank" rel="noopener"><img src="jmp_fig_new_uses.png" width="1300" height="878"
+            alt="Figure 1: 200 drugs, one per row, sorted by length of market exclusivity. New uses by originators and entrants cluster before exclusivity ends."></a>
+          <figcaption><strong>Figure 1.</strong> 200 drugs, one per row, sorted by market exclusivity (dark grey).
+            85% of new uses come before exclusivity ends. Click to enlarge.</figcaption>
+        </figure>
+      </div>
+
+      <p class="keywords"><strong>JEL:</strong> I18, L65, O31, O34 · <strong>Keywords:</strong> cumulative innovation, patents, market exclusivity, drug repurposing, generic entry</p>
     </article>
 
     <h2>Publications</h2>
@@ -545,8 +539,8 @@
     </div>
     <div>
       <p class="foot-h">Documents</p>
-      <p><a href="CV_Xixian_NIU.pdf" target="_blank" rel="noopener">Curriculum vitae</a></p>
-      <p><a href="JMP_Xixian_NIU.pdf" target="_blank" rel="noopener">Job market paper</a></p>
+      <p><a href="CV_Xixian_Niu.pdf" target="_blank" rel="noopener">Curriculum vitae</a></p>
+      <p><a href="JMP_Xixian_Niu.pdf" target="_blank" rel="noopener">Job market paper</a></p>
     </div>
   </div>
   <div class="wrap foot-note">Last updated November 2026</div>
